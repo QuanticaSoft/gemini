@@ -6,22 +6,57 @@ part of 'basic_chat.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(BasicChat)
+final basicChatProvider = BasicChatProvider._();
+
+final class BasicChatProvider
+    extends $NotifierProvider<BasicChat, List<Message>> {
+  BasicChatProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'basicChatProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$basicChatHash();
+
+  @$internal
+  @override
+  BasicChat create() => BasicChat();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(List<Message> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<List<Message>>(value),
+    );
+  }
+}
+
 String _$basicChatHash() => r'8f0720bda7a07e1190183d46cfb3698dc1f9b391';
 
-/// See also [BasicChat].
-@ProviderFor(BasicChat)
-final basicChatProvider =
-    AutoDisposeNotifierProvider<BasicChat, List<Message>>.internal(
-      BasicChat.new,
-      name: r'basicChatProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$basicChatHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
-
-typedef _$BasicChat = AutoDisposeNotifier<List<Message>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$BasicChat extends $Notifier<List<Message>> {
+  List<Message> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<List<Message>, List<Message>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<List<Message>, List<Message>>,
+              List<Message>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}
