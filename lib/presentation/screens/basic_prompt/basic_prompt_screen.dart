@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gemini_app/presentation/widgets/custom_bottom_input.dart';
+import 'package:gemini_app/presentation/widgets/chat/custom_bottom_input.dart';
+import 'package:image_picker/image_picker.dart';
+
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,22 +35,24 @@ class BasicPromptScreen extends ConsumerWidget {
         showUserNames: true,
 
         // Custom Input Area
-        customBottomWidget: CustomBottomInput( onSend:(partialText, {images=const[]}){
-          final basicChatNotifier = ref.read(basicChatProvider.notifier);
-          basicChatNotifier.addMessage(partialText: partialText, user: user);
-          
-          // Handle images if any
-
-        },),
+        customBottomWidget: CustomBottomInput(
+          onSend: (partialText, {images = const []}) {
+            final basicChatNotifier = ref.read(basicChatProvider.notifier);
+            basicChatNotifier.addMessage(
+              partialText: partialText,
+              user: user,
+              images: images,
+            );
+          },
+        ),
 
         // on files selected
         // onAttachmentPressed: () async {
-        //   // Handle attachment pressed
         //   ImagePicker picker = ImagePicker();
-        //   final List<XFile>? images = await picker.pickMultiImage(limit: 5);
-        //   if (images!.isEmpty) return;
-        //   print(images);
+        //   final List<XFile> images = await picker.pickMultiImage(limit: 4);
+        //   if (images.isEmpty) return;
 
+        //   print(images);
         // },
 
         // showUserAvatars: true,
@@ -62,3 +66,5 @@ class BasicPromptScreen extends ConsumerWidget {
     );
   }
 }
+
+
